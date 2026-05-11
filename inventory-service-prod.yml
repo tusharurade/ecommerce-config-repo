@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: inventory-service
+    name: inventoryservice
 
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=EmployeeDb;encrypt=true;trustServerCertificate=true

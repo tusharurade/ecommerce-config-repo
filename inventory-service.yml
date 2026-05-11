@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: inventory-service
+    name: inventoryservice
   eureka:
     client:
       service-url:
