@@ -9,7 +9,7 @@ spring:
           enabled: true
           lower-case-service-id: true
   application:
-    name: apigateway
+    name: api-gateway
 
 eureka:
   client:

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: paymentservice
+    name: payment-service
   eureka:
     client:
       service-url:
