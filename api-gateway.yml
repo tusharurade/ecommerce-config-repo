@@ -8,11 +8,32 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
         - id: product-service
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/api/products/**
+          filters:
+            - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: productServiceCircuitBreaker
+                fallbackUri: forward:/fallback/products
   application:
     name: api-gateway
 
@@ -26,3 +47,7 @@ management:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
