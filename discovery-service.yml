@@ -4,8 +4,15 @@ server:
 spring:
   application:
     name: discovery-service
-
+  kafka:
+    bootstrap-servers: localhost:9092
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh,busrefresh

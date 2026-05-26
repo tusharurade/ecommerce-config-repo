@@ -36,6 +36,8 @@ spring:
                 fallbackUri: forward:/fallback/products
   application:
     name: api-gateway
+  kafka:
+    bootstrap-servers: localhost:9092
 
 eureka:
   client:
@@ -46,7 +48,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health,info,refresh,busrefresh
 
 logging:
   level:

@@ -4,10 +4,8 @@ server:
 spring:
   application:
     name: payment-service
-  eureka:
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka
+  kafka:
+    bootstrap-servers: localhost:9092
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=EmployeeDb;encrypt=true;trustServerCertificate=true
     username: springuser
@@ -20,3 +18,12 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.SQLServerDialect
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh,busrefresh
